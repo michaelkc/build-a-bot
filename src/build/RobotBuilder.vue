@@ -2,7 +2,12 @@
   <div class="content">
       <button class="add-to-cart" @click="addToCart()">Add to cart</button>
     <div class="top-row">
-      <div class="top part">
+        <!-- CSS with hypens - use camel case: <div class="top part" :style="{backgroundColor: 'yellow'}"> -->
+        <!-- Multiple computed styles (later ones override settings in first if there is a conflict) <div class="top part" :style="[headBorderStyle, moreStyles]"> -->
+        <!-- <div class="top part" :style="headBorderStyle"> -->
+        <!-- <div class="top part" :class="{'sale-border': selectedRobot.head.onSale}"> -->
+        <!-- <div class="top part" :class="[saleBorderClass]"> -->
+            <div :class="[saleBorderClass, 'top', 'part']">
           <div class="robot-name"> 
             {{selectedRobot.head.title}}
             <span v-show="selectedRobot.head.onSale" class="sale">Sale!</span>
@@ -75,6 +80,9 @@
 
     export default {
         name: 'RobotBuilder',
+        created() {
+            //console.log('component created');
+        },
         data() {
             return {
                 availableParts,
@@ -87,6 +95,22 @@
             };
         },
         computed: {
+            saleBorderClass() {
+                let head = this.selectedRobot.head;
+                return  head.onSale ?  
+                        'sale-border' : 
+                        '';
+                    
+            },
+
+            headBorderStyle(){
+                let head = this.selectedRobot.head;
+                return  { 
+                    border: head.onSale ?  
+                        '3px solid red' : 
+                        '3px solid grey',
+                    };
+            },
             selectedRobot(){
                 
                 let head : number= this.selectedHeadIndex;
@@ -161,15 +185,17 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style lang="scss" scoped>
 .part {
   position: relative;
   width:165px;
   height:165px;
   border: 3px solid #aaa;
 } 
-.part img {
+.part {
+    img {
   width:165px;
+    }
 }
 .top-row {
   display:flex;
@@ -279,5 +305,9 @@ td, th {
 
 .cost{
     text-align: right;
+}
+
+.sale-border {
+    border: 3px solid red;
 }
 </style>
