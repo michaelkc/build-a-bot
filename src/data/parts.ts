@@ -1,12 +1,15 @@
 const images = (require as any).context('./images', true, /\.png$/);
 // const images = require.context('./images', true, /\.png$/);
 
+import {Part} from './Interfaces';
+import {Parts} from './Interfaces';
+
 const parts = {
   heads: [
     {
       id: 1,
       description:
-'A robot head with an unusually large eye and teloscpic neck -- excellent for exploring high spaces.',
+        'A robot head with an unusually large eye and teloscpic neck -- excellent for exploring high spaces.',
       title: 'Large Cyclops',
       src: images('./head-big-eye.png'),
       type: 'heads',
@@ -15,7 +18,7 @@ const parts = {
     {
       id: 2,
       description:
-'A friendly robot head with two eyes and a smile -- great for domestic use.',
+        'A friendly robot head with two eyes and a smile -- great for domestic use.',
       title: 'Friendly Bot',
       src: images('./head-friendly.png'),
       cost: 945.0,
@@ -25,7 +28,7 @@ const parts = {
     {
       id: 3,
       description:
-'A large three-eyed head with a shredder for a mouth -- great for crushing light medals or shredding documents.',
+        'A large three-eyed head with a shredder for a mouth -- great for crushing light medals or shredding documents.',
       title: 'Shredder',
       src: images('./head-shredder.png'),
       type: 'heads',
@@ -34,7 +37,7 @@ const parts = {
     {
       id: 4,
       description:
-'A simple single-eyed head -- simple and inexpensive.',
+        'A simple single-eyed head -- simple and inexpensive.',
       title: 'Small Cyclops',
       src: images('./head-single-eye.png'),
       type: 'heads',
@@ -43,18 +46,18 @@ const parts = {
     {
       id: 5,
       description:
-'A robot head with three oscillating eyes -- excellent for surveillance.',
+        'A robot head with three oscillating eyes -- excellent for surveillance.',
       title: 'Surveillance Bot',
       src: images('./head-surveillance.png'),
       type: 'heads',
       cost: 1255.5,
     },
-  ],
+  ] as Part[],
   arms: [
     {
       id: 1,
       description:
-'An articulated arm with a claw -- great for reaching around corners or working in tight spaces.',
+        'An articulated arm with a claw -- great for reaching around corners or working in tight spaces.',
       title: 'Articulated',
       src: images('./arm-articulated-claw.png'),
       type: 'arms',
@@ -63,7 +66,7 @@ const parts = {
     {
       id: 2,
       description:
-'An arm with two independent claws -- great when you need an extra hand. Need four hands? Equip your bot with two.',
+        'An arm with two independent claws -- great when you need an extra hand. Need four hands? Equip your bot with two.',
       title: 'Two Clawed',
       src: images('./arm-dual-claw.png'),
       type: 'arms',
@@ -94,7 +97,7 @@ const parts = {
       type: 'arms',
       cost: 125,
     },
-  ],
+  ] as Part[],
   torsos: [
     {
       id: 1,
@@ -121,7 +124,7 @@ const parts = {
       cost: 785,
       onSale: true,
     },
-  ],
+  ] as Part[],
   bases: [
     {
       id: 1,
@@ -142,7 +145,7 @@ const parts = {
     {
       id: 3,
       description:
-'A single-wheeled base with an accelerometer capable of higher speeds and navigating rougher terrain.',
+        'A single-wheeled base with an accelerometer capable of higher speeds and navigating rougher terrain.',
       title: 'Single Wheeled',
       src: images('./base-single-wheel.png'),
       type: 'bases',
@@ -159,12 +162,12 @@ const parts = {
     {
       id: 5,
       description:
-  'An inexpensive three-wheeled base. only capable of slow speeds and can only function on smooth surfaces.',
+        'An inexpensive three-wheeled base. only capable of slow speeds and can only function on smooth surfaces.',
       title: 'Triple Wheeled',
       src: images('./base-triple-wheel.png'),
       type: 'bases',
       cost: 700.5,
     },
-  ],
-};
+  ] as Part[],
+} as Parts;
 export default parts;
